@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 23:31:31 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 00:16:46 by omatyko          ###   ########.fr       */
+/*   Created: 2024/11/04 00:17:02 by omatyko           #+#    #+#             */
+/*   Updated: 2024/11/04 00:25:26 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *memmove(void *dest, const void *src, size_t n)
+void *memchr(const void *s, int c, size_t n)
 {
-    char *d;
-    char *s;
-
-    d = (char *)dest;
-    s = (char *)src;
-    if (d == NULL && s == NULL)
-        return (NULL);
-    if (d > s)
+    unsigned char *ptr;
+    ptr = (unsigned char *)s;
+    while (n-- > 0)
     {
-        while (n-- > 0)
-            d[n] = s[n];
+        if (*ptr == (unsigned char)c)
+        {
+            return (ptr);
+        }
+        ptr++;
     }
-    else
-    {
-        while (n-- > 0)
-            *d++ = *s++;
-    }
-    return (dest);
+    return (NULL);
 }
