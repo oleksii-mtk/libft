@@ -6,17 +6,17 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:34:46 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 12:00:57 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:26:48 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }

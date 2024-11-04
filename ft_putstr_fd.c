@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 15:42:50 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 14:46:07 by omatyko          ###   ########.fr       */
+/*   Created: 2024/11/04 17:22:44 by omatyko           #+#    #+#             */
+/*   Updated: 2024/11/04 17:25:45 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*res;
-
-	res = NULL;
-	while (*s != '\0')
+	if (s)
 	{
-		if (*s == (char)c)
-			res = (char *)s;
-		s++;
+		while (*s)
+		{
+			write(fd, s, 1);
+			s++;
+		}
 	}
-	if (c == '\0')
-		return ((char *)s);
-	return (res);
 }

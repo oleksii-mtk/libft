@@ -6,18 +6,17 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:18:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 15:34:30 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 17:18:51 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
 static size_t	count_words(char const *s, char c)
 {
-	size_t	count = 0;
+	size_t	count;
 
+	count = 0;
 	while (*s)
 	{
 		while (*s == c)
@@ -31,14 +30,13 @@ static size_t	count_words(char const *s, char c)
 	}
 	return (count);
 }
-#include <stdlib.h>
 
 void	free_all(char **arr, size_t count)
 {
 	size_t	i;
 
 	if (!arr)
-		return;
+		return ;
 	i = 0;
 	while (i < count)
 	{
@@ -48,13 +46,12 @@ void	free_all(char **arr, size_t count)
 	free(arr);
 }
 
-char	**ft_split(char const *s, char c)
+char	**split(char const *s, char c, char **res)
 {
-	char	**res;
-	size_t	i = 0, len;
+	size_t	i;
+	size_t	len;
 
-	if (!s || !(res = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (NULL);
+	i = 0;
 	while (*s)
 	{
 		if (*s != c)
@@ -62,13 +59,31 @@ char	**ft_split(char const *s, char c)
 			len = 0;
 			while (s[len] && s[len] != c)
 				len++;
-			if (!(res[i++] = ft_substr(s, 0, len)))
-				return (free_all(res, i));
+			res[i++] = ft_substr(s, 0, len);
+			if (!res[i - 1])
+			{
+				free_all(res, i);
+				return (NULL);
+			}
 			s += len;
 		}
 		else
 			s++;
 	}
 	res[i] = NULL;
+	return (res);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**res;
+
+	if (!s)
+		return (NULL);
+	res = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!res)
+		return (NULL);
+	 if(!split(s, c, res))
+		return(NULL);
 	return (res);
 }

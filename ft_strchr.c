@@ -6,9 +6,11 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:42:50 by omatyko           #+#    #+#             */
-/*   Updated: 2024/10/31 16:15:07 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:41:41 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

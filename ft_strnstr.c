@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 16:19:00 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 12:01:09 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:50:51 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	j;
-	int	l_len;
+	size_t	i;
+	size_t	j;
+	size_t	l_len;
 
 	i = 0;
 	l_len = 0;

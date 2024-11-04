@@ -6,13 +6,13 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 16:01:48 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 12:01:03 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:49:35 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

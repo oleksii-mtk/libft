@@ -6,15 +6,17 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:13:35 by omatyko           #+#    #+#             */
-/*   Updated: 2024/10/31 15:39:44 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:37:26 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcat(char *dst, const char *src, size_t size)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	return_len;
 	size_t	dst_len;
-	int		i;
+	size_t	res_len;
+	size_t	i;
 
 	dst_len = 0;
 	while (dst[dst_len] != '\0')

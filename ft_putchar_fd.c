@@ -6,11 +6,12 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:50:59 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 10:51:28 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 17:20:57 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
