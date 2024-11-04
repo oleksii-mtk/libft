@@ -6,90 +6,55 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:18:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 13:30:11 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:57:59 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(const char *s, char c)
+static size_t count_words(char const *s, char c)
 {
-	size_t	count;
-	int		in_word;
+	size_t count;
 
 	count = 0;
-	in_word = 0;
 	while (*s)
 	{
-		if (*s != c && !in_word)
+		while (*s == c)
+			s++;
+		if (*s)
 		{
-			in_word = 1;
 			count++;
+			while (*s && *s != c)
+				s++;
 		}
-		else if (*s == c)
-		{
-			in_word = 0;
-		}
-		s++;
 	}
 	return (count);
 }
 
-static char	*copy_word(const char *start, size_t length)
+char **ft_split(char const *s, char c)
 {
-	char	*word;
-	size_t	i;
-
-	word = (char *)malloc(sizeof(char) * (length + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (i < length)
-	{
-		word[i] = start[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**result;
-	size_t	word_count;
-	size_t	i;
-	size_t	len;
-	char	*word_start;
+	char **res;
+	size_t i;
+	size_t len;
 
 	i = 0;
-	len = 0;
-	word_count = count_words(s, c);
-	result = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (!result)
+	if (!s || !(res = malloc(sizeof(char *) * (count_words(s, c) + 1))))
 		return (NULL);
 	while (*s)
 	{
 		if (*s != c)
 		{
 			len = 0;
-			word_start = s;
-			while (*s && *s != c)
-			{
+			while (s[len] && s[len] != c)
 				len++;
-				s++;
-			}
-			result[i++] = copy_word(word_start, len);
-			if (!result[i - 1])
-			{
-				while (i > 0)
-					free(result[--i]);
-				free(result);
-				return (NULL);
-			}
+			if (!(res[i++] = strndup(s, len)))
+				return (free_all(res, i));
+			s += len;
 		}
 		else
 			s++;
 	}
-	result[i] = NULL;
-	return (result);
+	res[i] = NULL;
+	return (res);
 }
+
