@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:55:38 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 09:06:52 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:19:26 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t i;
-	size_t actual_len;
-	char *str;
+	size_t	i;
+	size_t	actual_len;
+	char	*str;
 
 	if (!s)
 		return (NULL);

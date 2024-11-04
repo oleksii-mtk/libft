@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 00:17:02 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 00:25:26 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:11:51 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	*memchr(const void *s, int c, size_t n)
 {
-	unsigned char *ptr;
+	unsigned char	*ptr;
+
 	ptr = (unsigned char *)s;
 	while (n-- > 0)
 	{

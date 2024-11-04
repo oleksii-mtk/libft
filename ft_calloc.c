@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 01:04:52 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 01:08:34 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:10:40 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *ptr;
+	void	*ptr;
 
 	ptr = (void *)malloc(count * size);
 	if (!ptr)

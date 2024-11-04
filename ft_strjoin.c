@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:08:03 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 09:11:20 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:18:04 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
-	size_t i;
-	size_t j;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 || !s2)
 		return (NULL);

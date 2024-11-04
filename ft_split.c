@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:18:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 09:48:27 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:06:51 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ static char	*copy_word(const char *start, size_t length)
 
 char	**ft_split(char const *s, char c)
 {
-	char **result;
-	size_t word_count;
-	size_t i = 0;
-	size_t len = 0;
-	const char *word_start;
+	char	**result;
+	size_t	word_count;
+	size_t	i;
+	size_t	len;
+	char	*word_start;
 
+	i = 0;
+	len = 0;
 	if (!s)
 		return (NULL);
-
 	word_count = count_words(s, c);
 	result = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
 		return (NULL);
-
 	while (*s)
 	{
 		if (*s != c)

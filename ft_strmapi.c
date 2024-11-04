@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:40:32 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 10:41:50 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:15:52 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t i;
-	char *result;
+	size_t	i;
+	char	*result;
 
 	if (!s || !f)
 		return (NULL);
