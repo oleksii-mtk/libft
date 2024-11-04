@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:18:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 13:06:51 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:30:11 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	len = 0;
-	if (!s)
-		return (NULL);
 	word_count = count_words(s, c);
 	result = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
