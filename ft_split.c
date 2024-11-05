@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:18:43 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 17:18:51 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/05 23:06:32 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-void	free_all(char **arr, size_t count)
+static void	free_all(char **arr, size_t count)
 {
 	size_t	i;
 
@@ -46,7 +46,7 @@ void	free_all(char **arr, size_t count)
 	free(arr);
 }
 
-char	**split(char const *s, char c, char **res)
+static char	**split(char const *s, char c, char **res)
 {
 	size_t	i;
 	size_t	len;
@@ -83,7 +83,7 @@ char	**ft_split(char const *s, char c)
 	res = malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);
-	 if(!split(s, c, res))
-		return(NULL);
+	if (!split(s, c, res))
+		return (NULL);
 	return (res);
 }
