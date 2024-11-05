@@ -3,6 +3,7 @@
 #include <ctype.h>  // for the standard isalpha
 #include <limits.h> // for INT_MAX and INT_MIN
 
+/*                             atoi                                     */
 
 int ft_atoi(const char *str);  // Declare your function from libft.a
 
@@ -46,6 +47,7 @@ void atoi_tests()
     test_ft_atoi("");
     test_ft_atoi("abc123");
 }
+/*                             isalpha                                     */
 
 int ft_isalpha(int c);  // Declare your custom function
 
@@ -84,8 +86,36 @@ void    isalpha_tests()
     test_isalpha(-1);  // Negative edge case
     test_isalpha(128); // Extended ASCII edge case (if applicable)
 }
+/*                             isdigit                                     */
 
 
+
+// Prototype for ft_isdigit (your custom function)
+int ft_isdigit(int c);
+
+// Test function for isdigit and ft_isdigit
+void test_isdigit() {
+    char test_cases[] = {'0', '5', '9', 'a', 'Z', ' ', '!', '1', '3', '8'};
+    int num_cases = sizeof(test_cases) / sizeof(test_cases[0]);
+
+    for (int i = 0; i < num_cases; i++) {
+        char c = test_cases[i];
+        int std_result = isdigit(c);
+        int ft_result = ft_isdigit(c);
+        
+    int expected = isdigit(c);  
+    int result = ft_isdigit(c); 
+
+    // Compare both results as non-zero (true) or zero (false)
+    if ((result != 0) == (expected != 0)) {
+        printf("PASS: Testing character '%c': isdigit = %d, ft_isdigit = %d\n", c, std_result, ft_result);
+    } else {
+        printf("FAIL: Testing character '%c': isdigit = %d, ft_isdigit = %d\n", c, std_result, ft_result);
+    }
+    }
+
+    
+}
 
 
 int main() {
@@ -94,6 +124,8 @@ int main() {
     atoi_tests();
     printf("isalpha TESTING START\n");
     isalpha_tests();
+    printf("isdigit TESTING START\n");
+    test_isdigit();
 
     return 0;
 }

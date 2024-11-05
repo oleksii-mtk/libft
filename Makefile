@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
 # Source Files
-SRCS = ft_itoa.c ft_isalpha.c
+SRCS = ft_itoa.c ft_isalpha.c ft_isdigit.c
 
 
 # Object Files (replace .c with .o)
