@@ -117,15 +117,52 @@ void test_isdigit() {
     
 }
 
+/*                               isalnum                                                */
+
+// Prototype for ft_isalnum (your custom function)
+int ft_isalnum(int c);
+
+// Test function for isalnum and ft_isalnum
+void test_isalnum() {
+    char test_cases[] = {'0', '5', '9', 'a', 'Z', ' ', '!', '@', '1', 'k', 'B', '3', '?'};
+    int num_cases = sizeof(test_cases) / sizeof(test_cases[0]);
+    int pass = 1; // Flag to indicate if all tests pass
+
+    for (int i = 0; i < num_cases; i++) {
+        char c = test_cases[i];
+        int std_result = isalnum(c) != 0;  // Convert to 0 or 1 (true/false)
+        int ft_result = ft_isalnum(c) != 0; // Convert to 0 or 1 (true/false)
+        
+        if (std_result != ft_result) {
+            printf("FAIL: Character '%c' - Expected %d, got %d\n", c, std_result, ft_result);
+            pass = 0; // Mark as fail if any test fails
+        }
+        else    
+            printf("PASS: Character '%c' - Expected %d, got %d\n", c, std_result, ft_result);
+    }
+
+    if (pass) {
+        printf("PASS: All tests passed for ft_isalnum!\n");
+    } else {
+        printf("FAIL: Some tests failed for ft_isalnum.\n");
+    }
+}
+
+
 
 int main() {
 
     printf("atoi TESTING START \n");
     atoi_tests();
+
     printf("isalpha TESTING START\n");
     isalpha_tests();
+
     printf("isdigit TESTING START\n");
     test_isdigit();
+    
+    printf("isalnum TESTING START\n");
+    test_isalnum();
 
     return 0;
 }
