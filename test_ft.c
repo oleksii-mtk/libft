@@ -179,33 +179,26 @@ void test_isascii() {
     }
 }
 
-// Prototype for ft_isprint (your custom function)
-int ft_isprint(int c);
 
 // Test function for isprint and ft_isprint
 void test_isprint() {
-    int test_cases[] = {31, 32, 48, 65, 97, 126, 127, -1, 0, 255}; // Variety of values in and out of printable range
+    int test_cases[] = {31, 32, 48, 65, 97, 126, 127, 128, -1, 0, 255}; // Variety of values in and out of printable range
     int num_cases = sizeof(test_cases) / sizeof(test_cases[0]);
     int pass = 1; // Flag to indicate if all tests pass
 
     for (int i = 0; i < num_cases; i++) {
         int c = test_cases[i];
-        int std_result = isprint(c) != 0;    // Convert to 0 or 1 (true/false)
-        int ft_result = ft_isprint(c) != 0;  // Convert to 0 or 1 (true/false)
+        int std_result = isprint(c) > 0;    // Convert to 0 or 1 (true/false)
+        int ft_result = ft_isprint(c) > 0;  // Convert to 0 or 1 (true/false)
         
         if (std_result != ft_result) {
             printf("FAIL: Character code %d - Expected %d, got %d\n", c, std_result, ft_result);
             pass = 0; // Mark as fail if any test fails
         }
         else 
-            printf("FAIL: Character code %d - Expected %d, got %d\n", c, std_result, ft_result);
+            printf("PASS: Character code %d - Expected %d, got %d\n", c, std_result, ft_result);
     }
 
-    if (pass) {
-        printf("PASS: All tests passed for ft_isprint!\n");
-    } else {
-        printf("FAIL: Some tests failed for ft_isprint.\n");
-    }
 }
 
 #include <string.h>
@@ -316,7 +309,7 @@ int main() {
     tests_strlen();
 
     printf("memset TESTING START\n");
-    test_memset_set()
+    tests_memset();
 
     return 0;
 }
