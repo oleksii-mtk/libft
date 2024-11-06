@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:34:46 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 14:26:48 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/06 13:40:52 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	ft_strlen(const char *s)
 {
 	int	i;
 
+	i = 0;
 	while (s[i] != '\0')
 		i++;
 	return (i);
