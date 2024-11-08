@@ -501,6 +501,66 @@ int tests_strlcpy() {
     return 0;
 }
 
+void print_test_result(int passed, const char *description) {
+    if (passed) {
+        printf("\033[32mPASS\033[0m %s\n", description);  // Зеленый для PASS
+    } else {
+        printf("\033[31mFAIL\033[0m %s\n", description);  // Красный для FAIL
+    }
+}
+
+void test_ft_strlcat()
+{
+    char dst[50];
+    const char *src = "World";
+    size_t result;
+
+    // Case A: Empty dst, non-empty src
+    strcpy(dst, "");
+    result = ft_strlcat(dst, src, 50);
+    print_test_result(strcmp(dst, "World") == 0 && result == strlen(src), "Empty dst, non-empty src");
+
+    // Case B: Non-empty dst, empty src
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, "", 50);
+    print_test_result(strcmp(dst, "Hello") == 0 && result == strlen("Hello"), "Non-empty dst, empty src");
+
+    // Case C: Both empty
+    strcpy(dst, "");
+    result = ft_strlcat(dst, "", 50);
+    print_test_result(strcmp(dst, "") == 0 && result == 0, "Both empty");
+
+    // Case D: size less than dst length
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 3);
+    print_test_result(result == 3 + strlen(src) && strcmp(dst, "Hello") == 0, "size < dst length");
+
+    // Case E: size equal to dst length
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 5);
+    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == dst length");
+
+    // Case F: size > dst length, enough for src
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 50);
+    print_test_result(strcmp(dst, "HelloWorld") == 0 && result == strlen("HelloWorld"), "size > dst length, enough for src");
+
+    // Case G: size < dst + src length
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 8);
+    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "HelloWo") == 0, "size < dst + src length");
+
+    // Case H: size == 0
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 0);
+    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == 0");
+
+    // Case I: size == 1
+    strcpy(dst, "Hello");
+    result = ft_strlcat(dst, src, 1);
+    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == 1");
+    printf("%u, -%u -%lu", strlen(dst),strlen(src), strlen(result));
+}
 
 int main() {
 
@@ -539,6 +599,9 @@ int main() {
 
     printf("strlcpy TESTING START\n");
     tests_strlcpy();
+
+    printf("strlcut TESTING START\n");
+    test_ft_strlcat();
 
     return 0;
 }
