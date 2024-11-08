@@ -2,6 +2,7 @@
 #include <stdlib.h> // for atoi
 #include <ctype.h>  // for the standard isalpha
 #include <limits.h> // for INT_MAX and INT_MIN
+#include <string.h>
 #include "libft.h"
 
 #define GREEN "\033[32m"
@@ -453,6 +454,15 @@ int tests_memmove() {
     return 0;
 }
 
+size_t strlcpy(char *dst, const char *src, size_t size) {
+    size_t srclen = strlen(src);
+    if (size > 0) {
+        size_t len = (srclen >= size) ? size - 1 : srclen;
+        memcpy(dst, src, len);
+        dst[len] = '\0';
+    }
+    return srclen;
+}
 
 // Helper function to test strlcpy and ft_strlcpy
 void test_strlcpy(const char *description, char *dest1, char *dest2, const char *src, size_t size) {
@@ -470,6 +480,8 @@ void test_strlcpy(const char *description, char *dest1, char *dest2, const char 
         printf("Result      : Failed\n\n");
     }
 }
+
+
 
 int tests_strlcpy() {
     char dest1[20];
@@ -501,66 +513,45 @@ int tests_strlcpy() {
     return 0;
 }
 
-void print_test_result(int passed, const char *description) {
-    if (passed) {
-        printf("\033[32mPASS\033[0m %s\n", description);  // Зеленый для PASS
+void test_strlcat(const char *dst_init, const char *src, size_t size) {
+    char dst1[100];
+    char dst2[100];
+
+    // Initialize destination buffers
+    strncpy(dst1, dst_init, sizeof(dst1) - 1);
+    dst1[sizeof(dst1) - 1] = '\0';
+    strncpy(dst2, dst_init, sizeof(dst2) - 1);
+    dst2[sizeof(dst2) - 1] = '\0';
+
+    // Run strlcat and ft_strlcat
+    size_t res1 = strlcat(dst1, src, size);
+    size_t res2 = ft_strlcat(dst2, src, size);
+
+    // Print results for comparison
+    printf("Testing with dst = \"%s\", src = \"%s\", size = %zu\n", dst_init, src, size);
+    printf("Original strlcat: result = %zu, dst = \"%s\"\n", res1, dst1);
+    printf("ft_strlcat      : result = %zu, dst = \"%s\"\n", res2, dst2);
+
+    if (res1 == res2 && strcmp(dst1, dst2) == 0) {
+        printf("PASS\n\n");
     } else {
-        printf("\033[31mFAIL\033[0m %s\n", description);  // Красный для FAIL
+        printf("FAIL\n\n");
     }
 }
 
-void test_ft_strlcat()
-{
-    char dst[50];
-    const char *src = "World";
-    size_t result;
+int tests_strlcat() {
+    // Test cases
+    test_strlcat("Hello, ", "world!", 15);       // Normal concatenation
+    test_strlcat("Hello, ", "world!", 10);       // Truncation of src
+    test_strlcat("Hello, ", "world!", 5);        // No space for concatenation
+    test_strlcat("Hello, ", "", 15);             // Empty src
+    test_strlcat("", "world!", 15);              // Empty dst
+    test_strlcat("Hello, world!", " Test", 5);   // Size smaller than dst length
+    test_strlcat("Hello", " world!", 0);         // Size 0 edge case
 
-    // Case A: Empty dst, non-empty src
-    strcpy(dst, "");
-    result = ft_strlcat(dst, src, 50);
-    print_test_result(strcmp(dst, "World") == 0 && result == strlen(src), "Empty dst, non-empty src");
-
-    // Case B: Non-empty dst, empty src
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, "", 50);
-    print_test_result(strcmp(dst, "Hello") == 0 && result == strlen("Hello"), "Non-empty dst, empty src");
-
-    // Case C: Both empty
-    strcpy(dst, "");
-    result = ft_strlcat(dst, "", 50);
-    print_test_result(strcmp(dst, "") == 0 && result == 0, "Both empty");
-
-    // Case D: size less than dst length
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 3);
-    print_test_result(result == 3 + strlen(src) && strcmp(dst, "Hello") == 0, "size < dst length");
-
-    // Case E: size equal to dst length
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 5);
-    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == dst length");
-
-    // Case F: size > dst length, enough for src
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 50);
-    print_test_result(strcmp(dst, "HelloWorld") == 0 && result == strlen("HelloWorld"), "size > dst length, enough for src");
-
-    // Case G: size < dst + src length
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 8);
-    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "HelloWo") == 0, "size < dst + src length");
-
-    // Case H: size == 0
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 0);
-    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == 0");
-
-    // Case I: size == 1
-    strcpy(dst, "Hello");
-    result = ft_strlcat(dst, src, 1);
-    print_test_result(result == strlen("Hello") + strlen("World") && strcmp(dst, "Hello") == 0, "size == 1");
-    printf("%u, -%u -%lu", strlen(dst),strlen(src), strlen(result));
+    return 0;
 }
+
 
 int main() {
 
@@ -601,7 +592,8 @@ int main() {
     tests_strlcpy();
 
     printf("strlcut TESTING START\n");
-    test_ft_strlcat();
+    tests_strlcat();
+
 
     return 0;
 }

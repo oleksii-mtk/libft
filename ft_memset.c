@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:27:16 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 14:30:08 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:25:10 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	*ft_memset(void *s, int c, size_t n)
 		*(b++) = (unsigned char)c;
 		n--;
 	}
-	return (b);
+	return (s);
 }

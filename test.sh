@@ -7,7 +7,7 @@ make clean
 make
 
 # Compile the test program
-gcc -o test_ft test_ft.c -L. -lft
+gcc -o test_ft test_ft.c -L. -lft -lbsd
 
 # Run the test program
 echo "Running tests..."
