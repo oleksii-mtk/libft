@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 00:17:02 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 13:11:51 by omatyko          ###   ########.fr       */
+/*   Created: 2024/11/12 12:08:42 by omatyko           #+#    #+#             */
+/*   Updated: 2024/11/12 12:16:19 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*p;
+	unsigned char	b;
 
-	ptr = (unsigned char *)s;
-	while (n-- > 0)
+	p = (unsigned char *)s;
+	b = (unsigned char)c;
+	while (n--)
 	{
-		if (*ptr == (unsigned char)c)
+		if (*p == b)
 		{
-			return (ptr);
+			return ((void *)p);
 		}
-		ptr++;
+		p++;
 	}
 	return (NULL);
 }

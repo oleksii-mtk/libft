@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:02:18 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 13:25:12 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/12 15:27:56 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ static int	get_num_length(int n)
 	return (length);
 }
 
+static void	minus(int *n, char *result, int *length)
+{
+	if (*n == -2147483648)
+	{
+		result[--(*length)] = '8';
+		*n /= 10;
+	}
+	*n = -(*n);
+}
+
 char	*ft_itoa(int n)
 {
 	int		length;
@@ -37,18 +47,17 @@ char	*ft_itoa(int n)
 	if (!result)
 		return (NULL);
 	result[length] = '\0';
+	if (n == 0)
+	{
+		result[0] = '0';
+		return (result);
+	}
 	if (n < 0)
 	{
 		result[0] = '-';
-		n = -n;
+		minus(&n, result, &length);
 	}
-	else if (n == 0)
-	{
-		result[0] = '0';
-		result[0] = '\0';
-		return (result);
-	}
-	while (n > 0)
+	while (n)
 	{
 		result[--length] = (n % 10) + '0';
 		n /= 10;
