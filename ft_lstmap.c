@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:33:16 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/12 19:33:47 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/13 00:42:39 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*newlist;
 	t_list	*newnode;
-	void	*newcontent;
 
+	newlist = NULL;
 	while (lst != NULL)
 	{
-		newcontent = f(lst->content);
-		newnode = ft_lstnew(newcontent);
+		newnode = ft_lstnew(f(lst->content));
 		if (newnode == NULL)
 		{
 			ft_lstclear(&newlist, del);
