@@ -6,7 +6,7 @@
 /*   By: omatyko <omatyko@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 00:58:30 by omatyko           #+#    #+#             */
-/*   Updated: 2024/11/04 13:04:21 by omatyko          ###   ########.fr       */
+/*   Updated: 2024/11/13 15:45:21 by omatyko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	minus;
-	int	res;
+	int		i;
+	int		minus;
+	long	res;
 
 	i = 0;
 	minus = 1;
@@ -35,5 +35,7 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	return (minus * res);
+	if ((minus * res) != (int)(minus * res))
+		return (-1);
+	return ((int)(minus * res));
 }
